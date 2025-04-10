@@ -11,6 +11,7 @@ const sequelize = new Sequelize(
     port: process.env.DB_PORT,
     dialect: process.env.DB_DIALECT,
     logging: false,
+    database: process.env.NODE_ENV === "test" ? "test_db" : "production_db",
   }
 );
 

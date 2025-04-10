@@ -1,6 +1,21 @@
 const request = require("supertest");
-const app = require("../server.js"); // Make sure the app is properly initialized
+const app = require("../server");
+const { sequelize } = require("../models");
 const path = require("path");
+
+beforeAll(async () => {
+  jest.spyOn(console, "log").mockImplementation(() => {});
+  if (!sequelize.connectionManager.pool) {
+    // Re-initialize the pool if it was closed in a previous test run
+    await sequelize.authenticate();
+  }
+  await sequelize.sync({ alter: true });
+});
+
+afterAll(async () => {
+  console.log.mockRestore();
+  await sequelize.close(); // Close after all tests
+});
 
 describe("Survey API Endpoints", () => {
   // Test: Fetching all questions
@@ -19,7 +34,10 @@ describe("Survey API Endpoints", () => {
       .field("gender", "MALE")
       .field("description", "Testing the API")
       .field("programming_stack", "NODE,REACT")
-      .attach("certificates", path.resolve(__dirname, "sample.pdf")); // Adjust the path to a real test file
+      .attach(
+        "certificates",
+        path.resolve(__dirname, "fixtures", "sample.pdf")
+      ); // Adjust the path to a real test file
 
     expect(res.statusCode).toBe(201); // Expecting a successful creation response
     expect(res.body).toHaveProperty("question_response");
