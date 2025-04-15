@@ -6,9 +6,8 @@ const surveyRoutes = require("./routes/surveyRoutes");
 const app = express();
 const cors = require('cors');
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'https://simple-survey-client.onrender.com',
 }));
-
 
 // Middleware
 app.use(express.json());
