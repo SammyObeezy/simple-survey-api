@@ -248,7 +248,7 @@ See `ERD.png` for the full Entity Relationship Diagram.
 This API has been deployed using [Render](https://render.com/).
 
 Visit the deployed backend server:
-👉 **[https://simple-survey-client.onrender.com/](https://simple-survey-client.onrender.com/)**
+👉 **[[https://simple-survey-client.onrender.com/](https://simple-survey-api-1.onrender.com)])**
 
 Ensure you set environment variables on Render just as you would in your `.env` file.
 
