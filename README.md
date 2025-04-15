@@ -37,7 +37,7 @@ simple-survey-api/
 ├── seed.js            # Seed initial questions and options
 ├── ERD.png            # Entity Relationship Diagram
 ├── sky_survey_db.sql  # PostgreSQL database schema
-├── postman_collection.json # Postman collection for testing
+├── Sky_survey.postman_collection.json # Postman collection for testing
 ├── package.json       # Node dependencies and scripts
 └── README.md
 ```
