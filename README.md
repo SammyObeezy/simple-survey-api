@@ -21,24 +21,25 @@ The system is designed with extensibility and flexibility in mind.
 
 ```
 simple-survey-api/
-├── config/            # Database configuration (Sequelize)
+├── config/                              # Database configuration (Sequelize)
 │   └── db.js
-├── models/            # Sequelize models
-│   ├── index.js       # Associations
+├── models/                              # Sequelize models
+│   ├── index.js                         # Associations
 │   ├── User.js
 │   ├── Question.js
 │   ├── Option.js
 │   ├── Response.js
 │   └── Certificate.js
-├── routes/            # API route handlers
-├── controllers/       # Business logic (optional structure)
-├── tests/             # Automated test files
-├── .env               # Environment variables
-├── seed.js            # Seed initial questions and options
-├── ERD.png            # Entity Relationship Diagram
-├── sky_survey_db.sql  # PostgreSQL database schema
-├── Sky_survey.postman_collection.json # Postman collection for testing
-├── package.json       # Node dependencies and scripts
+├── routes/                              # API route handlers
+├── controllers/                         # Business logic (optional structure)
+├── tests/                               # Automated test files
+├── uploads/                             # Uploaded certificate files
+├── .env                                 # Environment variables
+├── seed.js                              # Seed initial questions and options
+├── ERD.png                              # Entity Relationship Diagram
+├── sky_survey_db.sql                    # PostgreSQL database schema
+├── Sky_survey.postman_collection.json   # Postman collection for testing
+├── package.json                         # Node dependencies and scripts
 └── README.md
 ```
 
@@ -51,9 +52,9 @@ simple-survey-api/
 - PostgreSQL (Make sure it's running locally or accessible remotely)
 
 ### Environment Variables
-Create a `.env` file in the root directory:
+Create a .env file in the root directory:
 
-```env
+env
 DB_NAME=sky_survey_db
 DB_USER=your_postgres_username
 DB_PASSWORD=your_postgres_password
@@ -61,38 +62,45 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_DIALECT=postgres
 NODE_ENV=development
-```
 
 ### Install dependencies
+
 ```bash
 npm install
 ```
 
 ### Database Setup
+
 1. Create the database:
-   ```bash
-   createdb sky_survey_db
-   ```
+
+```bash
+createdb sky_survey_db
+```
 
 2. Run migrations (if using Sequelize CLI), or let Sequelize auto sync models:
-   ```bash
-   node seed.js
-   ```
-   This will seed the survey questions and options.
+
+```bash
+node seed.js
+```
+
+This will seed the survey questions and options.
 
 ### Start the server
+
 ```bash
 npm start
 ```
 
-Server will be running on: `http://localhost:5000`
+Server will be running on: http://localhost:5000
 
 ---
 
 ## 🧪 Testing
+
 ```bash
 npm test
 ```
+
 Runs automated tests using your configured test environment.
 
 ---
@@ -100,8 +108,8 @@ Runs automated tests using your configured test environment.
 ## 📬 API Endpoints
 
 ### 1. Get All Questions
-- **URL**: `/api/questions`
-- **Method**: `GET`
+- **URL**: /api/questions
+- **Method**: GET
 - **Response Format** (XML-like structure):
 
 ```xml
@@ -155,9 +163,9 @@ Runs automated tests using your configured test environment.
 ---
 
 ### 2. Submit Responses
-- **URL**: `/api/questions/responses`
-- **Method**: `PUT`
-- **Body**: `multipart/form-data` (with certificates as file inputs)
+- **URL**: /api/questions/responses
+- **Method**: PUT
+- **Body**: multipart/form-data (with certificates as file inputs)
 
 **Example JSON Response**:
 
@@ -179,11 +187,11 @@ Runs automated tests using your configured test environment.
 ---
 
 ### 3. Get All Responses
-- **URL**: `/api/questions/responses`
-- **Method**: `GET`
+- **URL**: /api/questions/responses
+- **Method**: GET
 - **Query Params**:
-  - `page` - page number
-  - `email_address` - filter responses by email
+  - page - page number
+  - email_address - filter responses by email
 
 **Example Response**:
 
@@ -221,14 +229,14 @@ Runs automated tests using your configured test environment.
 ---
 
 ### 4. Download Certificate by ID
-- **URL**: `/api/questions/responses/certificates/{id}`
-- **Method**: `GET`
+- **URL**: /api/questions/responses/certificates/{id}
+- **Method**: GET
 - **Description**: Downloads a specific certificate PDF by its ID
 
 ---
 
 ## 📂 Postman Collection
-A full Postman collection is included: `postman_collection.json`
+A full Postman collection is included: postman_collection.json
 
 It documents:
 - All endpoints
@@ -239,7 +247,7 @@ It documents:
 ---
 
 ## 🧩 ERD Diagram
-See `ERD.png` for the full Entity Relationship Diagram.
+See ERD.png for the full Entity Relationship Diagram.
 
 ---
 
@@ -248,9 +256,9 @@ See `ERD.png` for the full Entity Relationship Diagram.
 This API has been deployed using [Render](https://render.com/).
 
 Visit the deployed backend server:
-👉 **[[https://simple-survey-client.onrender.com/](https://simple-survey-api-1.onrender.com)])**
+👉 **[https://simple-survey-api-1.onrender.com](https://simple-survey-api-1.onrender.com)**
 
-Ensure you set environment variables on Render just as you would in your `.env` file.
+Ensure you set environment variables on Render just as you would in your .env file.
 
 ---
 
