@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "85b1b91a-308c-40ff-b48b-67204d17fd79",
+		"name": "Sky_survey",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36722255",
+		"_collection_link": "https://www.postman.com/altimetry-meteorologist-4341021/workspace/my-workspace/collection/36722255-85b1b91a-308c-40ff-b48b-67204d17fd79?action=share&source=collection_link&creator=36722255"
+	},
+	"item": [
+		{
+			"name": "getquestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://simple-survey-api-1.onrender.com/api/questions",
+					"protocol": "https",
+					"host": [
+						"simple-survey-api-1",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put,responses",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "full_name",
+							"value": "Sam",
+							"type": "text"
+						},
+						{
+							"key": "email_address",
+							"value": "sammyexample@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "I'm a Software engineer",
+							"type": "text"
+						},
+						{
+							"key": "gender",
+							"value": "MALE",
+							"type": "text"
+						},
+						{
+							"key": "programming_stack",
+							"value": "REACT,VUE, MYSQL,GO",
+							"type": "text"
+						},
+						{
+							"key": "certificates",
+							"type": "file",
+							"src": "/C:/Users/User/Desktop/MyFiles/Certificate/Degree.pdf"
+						},
+						{
+							"key": "certificates",
+							"type": "file",
+							"src": "/C:/Users/User/Desktop/MyFiles/Certificate/Degree.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/questions/responses",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions",
+						"responses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getquestionsreponses",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "getquestion,responses,certificates",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
