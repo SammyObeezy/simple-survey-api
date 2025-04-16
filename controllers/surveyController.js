@@ -216,19 +216,22 @@ const getCertificate = async (req, res) => {
   try {
     const certificate = await Certificate.findByPk(req.params.id);
     if (!certificate) {
-      return res.status(404).json({ error: "Certificate not found" });
+      return res.status(404).json({ error: "Certificate not found in database" });
     }
-    const filePath = path.join(
-      __dirname,
-      "..",
-      "uploads",
-      certificate.file_name
-    );
-    res.download(filePath);
+
+    if (!certificate.file_data) {
+      return res.status(404).json({ error: "Certificate file data missing" });
+    }
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${certificate.file_name}"`);
+    res.send(certificate.file_data);
   } catch (error) {
+    console.error("Error sending certificate file from DB:", error);
     res.status(500).json({ error: error.message });
   }
 };
+
 
 module.exports = {
   getQuestions,
